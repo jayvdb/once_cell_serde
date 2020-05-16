@@ -350,6 +350,9 @@ mod imp;
 #[path = "imp_std.rs"]
 mod imp;
 
+#[cfg(feature = "serde")]
+mod serde_impl;
+
 /// Single-threaded version of `OnceCell`.
 pub mod unsync {
     use core::{

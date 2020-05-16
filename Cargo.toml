@@ -25,6 +25,7 @@ members = ["xtask"]
 parking_lot_core = { version = "0.9.3", optional = true, default_features = false }
 atomic_polyfill = { package = "atomic-polyfill", version = "1", optional = true }
 critical_section = { package = "critical-section", version = "1", optional = true }
+serde = { version = "^1", optional = true }
 
 [dev-dependencies]
 lazy_static = "1.0.0"
