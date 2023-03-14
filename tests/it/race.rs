@@ -6,7 +6,7 @@ use std::{
     thread::scope,
 };
 
-use once_cell::race::{OnceBool, OnceNonZeroUsize};
+use once_cell_serde::race::{OnceBool, OnceNonZeroUsize};
 
 #[test]
 fn once_non_zero_usize_smoke_test() {

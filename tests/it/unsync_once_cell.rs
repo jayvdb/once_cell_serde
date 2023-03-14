@@ -3,7 +3,7 @@ use core::{
     sync::atomic::{AtomicUsize, Ordering::SeqCst},
 };
 
-use once_cell::unsync::OnceCell;
+use once_cell_serde::unsync::OnceCell;
 
 #[test]
 fn once_cell() {

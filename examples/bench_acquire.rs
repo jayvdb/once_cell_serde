@@ -2,7 +2,7 @@
 //! We do some other operations that write to memory to get an imprecise but somewhat realistic
 //! measurement.
 
-use once_cell::sync::OnceCell;
+use once_cell_serde::sync::OnceCell;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
 const N_THREADS: usize = 16;

@@ -36,7 +36,7 @@
 //! ```rust
 //! use std::{env, io};
 //!
-//! use once_cell::sync::OnceCell;
+//! use once_cell_serde::sync::OnceCell;
 //!
 //! #[derive(Debug)]
 //! pub struct Logger {
@@ -69,7 +69,7 @@
 //! ```rust
 //! use std::{sync::Mutex, collections::HashMap};
 //!
-//! use once_cell::sync::OnceCell;
+//! use once_cell_serde::sync::OnceCell;
 //!
 //! fn global_data() -> &'static Mutex<HashMap<i32, String>> {
 //!     static INSTANCE: OnceCell<Mutex<HashMap<i32, String>>> = OnceCell::new();
@@ -87,7 +87,7 @@
 //!
 //! ```rust
 //! use std::{sync::Mutex, collections::HashMap};
-//! use once_cell::sync::Lazy;
+//! use once_cell_serde::sync::Lazy;
 //!
 //! static GLOBAL_DATA: Lazy<Mutex<HashMap<i32, String>>> = Lazy::new(|| {
 //!     let mut m = HashMap::new();
@@ -112,7 +112,7 @@
 //! Unlike `lazy_static!`, `Lazy` works with local variables.
 //!
 //! ```rust
-//! use once_cell::unsync::Lazy;
+//! use once_cell_serde::unsync::Lazy;
 //!
 //! fn main() {
 //!     let ctx = vec![1, 2, 3];
@@ -130,7 +130,7 @@
 //! ```rust
 //! use std::{fs, path::PathBuf};
 //!
-//! use once_cell::unsync::OnceCell;
+//! use once_cell_serde::unsync::OnceCell;
 //!
 //! struct Ctx {
 //!     config_path: PathBuf,
@@ -155,7 +155,7 @@
 //! ```
 //! macro_rules! regex {
 //!     ($re:literal $(,)?) => {{
-//!         static RE: once_cell::sync::OnceCell<regex::Regex> = once_cell::sync::OnceCell::new();
+//!         static RE: once_cell_serde::sync::OnceCell<regex::Regex> = once_cell_serde::sync::OnceCell::new();
 //!         RE.get_or_init(|| regex::Regex::new($re).unwrap())
 //!     }};
 //! }
@@ -173,7 +173,7 @@
 //! ```
 //! use std::path::Path;
 //!
-//! use once_cell::sync::OnceCell;
+//! use once_cell_serde::sync::OnceCell;
 //!
 //! pub struct TestResource {
 //!     path: &'static str,
@@ -212,7 +212,7 @@
 //!
 //!
 //! ```
-//! use once_cell::sync::OnceCell;
+//! use once_cell_serde::sync::OnceCell;
 //!
 //! pub struct LateInit<T> { cell: OnceCell<T> }
 //!
@@ -400,7 +400,7 @@ pub mod unsync {
     ///
     /// # Example
     /// ```
-    /// use once_cell::unsync::OnceCell;
+    /// use once_cell_serde::unsync::OnceCell;
     ///
     /// let cell = OnceCell::new();
     /// assert!(cell.get().is_none());
@@ -500,7 +500,7 @@ pub mod unsync {
         /// interior mutability, `&mut` access permits arbitrary modification:
         ///
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let mut cell: OnceCell<u32> = OnceCell::new();
         /// cell.set(92).unwrap();
@@ -520,7 +520,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// assert!(cell.get().is_none());
@@ -541,7 +541,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// assert!(cell.get().is_none());
@@ -578,7 +578,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// let value = cell.get_or_init(|| 92);
@@ -611,7 +611,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// assert_eq!(cell.get_or_try_init(|| Err(())), Err(()));
@@ -645,7 +645,7 @@ pub mod unsync {
         /// # Examples
         ///
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let mut cell: OnceCell<String> = OnceCell::new();
         /// assert_eq!(cell.take(), None);
@@ -661,7 +661,7 @@ pub mod unsync {
         /// interior mutability, `&mut` access permits arbitrary modification:
         ///
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let mut cell: OnceCell<u32> = OnceCell::new();
         /// cell.set(92).unwrap();
@@ -678,7 +678,7 @@ pub mod unsync {
         /// # Examples
         ///
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell: OnceCell<String> = OnceCell::new();
         /// assert_eq!(cell.into_inner(), None);
@@ -698,7 +698,7 @@ pub mod unsync {
     ///
     /// # Example
     /// ```
-    /// use once_cell::unsync::Lazy;
+    /// use once_cell_serde::unsync::Lazy;
     ///
     /// let lazy: Lazy<i32> = Lazy::new(|| {
     ///     println!("initializing");
@@ -733,7 +733,7 @@ pub mod unsync {
         /// # Example
         /// ```
         /// # fn main() {
-        /// use once_cell::unsync::Lazy;
+        /// use once_cell_serde::unsync::Lazy;
         ///
         /// let hello = "Hello, World!".to_string();
         ///
@@ -766,7 +766,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::Lazy;
+        /// use once_cell_serde::unsync::Lazy;
         ///
         /// let lazy = Lazy::new(|| 92);
         ///
@@ -787,7 +787,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::Lazy;
+        /// use once_cell_serde::unsync::Lazy;
         ///
         /// let mut lazy = Lazy::new(|| 92);
         ///
@@ -810,7 +810,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::Lazy;
+        /// use once_cell_serde::unsync::Lazy;
         ///
         /// let lazy = Lazy::new(|| 92);
         ///
@@ -827,7 +827,7 @@ pub mod unsync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::unsync::Lazy;
+        /// use once_cell_serde::unsync::Lazy;
         ///
         /// let mut lazy = Lazy::new(|| 92);
         ///
@@ -885,7 +885,7 @@ pub mod sync {
     ///
     /// # Example
     /// ```
-    /// use once_cell::sync::OnceCell;
+    /// use once_cell_serde::sync::OnceCell;
     ///
     /// static CELL: OnceCell<String> = OnceCell::new();
     /// assert!(CELL.get().is_none());
@@ -976,7 +976,7 @@ pub mod sync {
         /// thread until it is set.
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let mut cell = std::sync::Arc::new(OnceCell::new());
         /// let t = std::thread::spawn({
@@ -1012,7 +1012,7 @@ pub mod sync {
         /// interior mutability, `&mut` access permits arbitrary modification:
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let mut cell: OnceCell<u32> = OnceCell::new();
         /// cell.set(92).unwrap();
@@ -1043,7 +1043,7 @@ pub mod sync {
         /// # Example
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// static CELL: OnceCell<i32> = OnceCell::new();
         ///
@@ -1070,7 +1070,7 @@ pub mod sync {
         /// # Example
         ///
         /// ```
-        /// use once_cell::unsync::OnceCell;
+        /// use once_cell_serde::unsync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// assert!(cell.get().is_none());
@@ -1107,7 +1107,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// let value = cell.get_or_init(|| 92);
@@ -1141,7 +1141,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let cell = OnceCell::new();
         /// assert_eq!(cell.get_or_try_init(|| Err(())), Err(()));
@@ -1175,7 +1175,7 @@ pub mod sync {
         /// # Examples
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let mut cell: OnceCell<String> = OnceCell::new();
         /// assert_eq!(cell.take(), None);
@@ -1191,7 +1191,7 @@ pub mod sync {
         /// interior mutability, `&mut` access permits arbitrary modification:
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let mut cell: OnceCell<u32> = OnceCell::new();
         /// cell.set(92).unwrap();
@@ -1207,7 +1207,7 @@ pub mod sync {
         /// # Examples
         ///
         /// ```
-        /// use once_cell::sync::OnceCell;
+        /// use once_cell_serde::sync::OnceCell;
         ///
         /// let cell: OnceCell<String> = OnceCell::new();
         /// assert_eq!(cell.into_inner(), None);
@@ -1231,7 +1231,7 @@ pub mod sync {
     /// ```
     /// use std::collections::HashMap;
     ///
-    /// use once_cell::sync::Lazy;
+    /// use once_cell_serde::sync::Lazy;
     ///
     /// static HASHMAP: Lazy<HashMap<i32, String>> = Lazy::new(|| {
     ///     println!("initializing");
@@ -1301,7 +1301,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::Lazy;
+        /// use once_cell_serde::sync::Lazy;
         ///
         /// let lazy = Lazy::new(|| 92);
         ///
@@ -1321,7 +1321,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::Lazy;
+        /// use once_cell_serde::sync::Lazy;
         ///
         /// let mut lazy = Lazy::new(|| 92);
         ///
@@ -1343,7 +1343,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::Lazy;
+        /// use once_cell_serde::sync::Lazy;
         ///
         /// let lazy = Lazy::new(|| 92);
         ///
@@ -1360,7 +1360,7 @@ pub mod sync {
         ///
         /// # Example
         /// ```
-        /// use once_cell::sync::Lazy;
+        /// use once_cell_serde::sync::Lazy;
         ///
         /// let mut lazy = Lazy::new(|| 92);
         ///
@@ -1398,7 +1398,7 @@ pub mod sync {
     /// unsafe impl Sync for S {}
     ///
     /// fn share<T: Sync>(_: &T) {}
-    /// share(&once_cell::sync::OnceCell::<S>::new());
+    /// share(&once_cell_serde::sync::OnceCell::<S>::new());
     /// ```
     ///
     /// ```compile_fail
@@ -1406,7 +1406,7 @@ pub mod sync {
     /// unsafe impl Sync for S {}
     ///
     /// fn share<T: Sync>(_: &T) {}
-    /// share(&once_cell::sync::Lazy::<S>::new(|| unimplemented!()));
+    /// share(&once_cell_serde::sync::Lazy::<S>::new(|| unimplemented!()));
     /// ```
     fn _dummy() {}
 }

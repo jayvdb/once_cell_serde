@@ -3,7 +3,7 @@ use core::{
     sync::atomic::{AtomicUsize, Ordering::SeqCst},
 };
 
-use once_cell::unsync::Lazy;
+use once_cell_serde::unsync::Lazy;
 
 #[test]
 fn lazy_new() {

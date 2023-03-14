@@ -9,7 +9,7 @@ use std::sync::Barrier;
 #[cfg(not(feature = "std"))]
 use core::cell::Cell;
 
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell_serde::sync::{Lazy, OnceCell};
 
 #[test]
 fn once_cell() {

@@ -4,7 +4,7 @@ use std::{
     thread::scope,
 };
 
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell_serde::sync::{Lazy, OnceCell};
 
 #[test]
 fn lazy_new() {

@@ -5,7 +5,7 @@ use std::sync::{
     Arc,
 };
 
-use once_cell::race::OnceBox;
+use once_cell_serde::race::OnceBox;
 
 #[derive(Default)]
 struct Heap {

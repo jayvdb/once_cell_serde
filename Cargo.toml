@@ -1,5 +1,5 @@
 [package]
-name = "once_cell"
+name = "once_cell_serde"
 version = "1.20.2"
 authors = ["Aleksey Kladov <aleksey.kladov@gmail.com>"]
 license = "MIT OR Apache-2.0"
@@ -10,7 +10,7 @@ description = "Single assignment cells and lazy values."
 readme = "README.md"
 documentation = "https://docs.rs/once_cell"
 
-repository = "https://github.com/matklad/once_cell"
+repository = "https://github.com/jayvdb/once_cell_serde"
 keywords = ["lazy", "static"]
 categories = ["rust-patterns", "memory-management"]
 
@@ -28,20 +28,21 @@ serde = { version = "1.0", optional = true }
 [dev-dependencies]
 regex =  "1.10.6"
 critical-section = { version = "1.1.3", features = ["std"] }
+lazy_static = "1.4.0"
 
 [features]
 default = ["std"]
 
-# Enables `once_cell::sync` module.
+# Enables `sync` module.
 std = ["alloc"]
 
-# Enables `once_cell::race::OnceBox` type.
+# Enables `race::OnceBox` type.
 alloc = ["race"]
 
-# Enables `once_cell::race` module.
+# Enables `race` module.
 race = []
 
-# Uses parking_lot to implement once_cell::sync::OnceCell.
+# Uses parking_lot to implement `sync::OnceCell`.
 # This makes no speed difference, but makes each OnceCell<T>
 # up to 16 bytes smaller, depending on the size of the T.
 parking_lot = ["dep:parking_lot_core"]
