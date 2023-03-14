@@ -270,7 +270,7 @@ impl<'a, T> OnceRef<'a, T> {
     }
 
     /// ```compile_fail
-    /// use once_cell::race::OnceRef;
+    /// use once_cell_serde::race::OnceRef;
     ///
     /// let mut l = OnceRef::new();
     ///
@@ -413,7 +413,7 @@ mod once_box {
     /// unsafe impl Sync for S {}
     ///
     /// fn share<T: Sync>(_: &T) {}
-    /// share(&once_cell::race::OnceBox::<S>::new());
+    /// share(&once_cell_serde::race::OnceBox::<S>::new());
     /// ```
     fn _dummy() {}
 }

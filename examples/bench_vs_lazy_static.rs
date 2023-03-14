@@ -1,5 +1,5 @@
 use lazy_static::lazy_static;
-use once_cell::sync::Lazy;
+use once_cell_serde::sync::Lazy;
 
 const N_THREADS: usize = 32;
 const N_ROUNDS: usize = 100_000_000;

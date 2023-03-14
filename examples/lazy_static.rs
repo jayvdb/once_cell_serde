@@ -1,6 +1,6 @@
-extern crate once_cell;
+extern crate once_cell_serde;
 
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell_serde::sync::{Lazy, OnceCell};
 use std::collections::HashMap;
 
 static HASHMAP: Lazy<HashMap<u32, &'static str>> = Lazy::new(|| {

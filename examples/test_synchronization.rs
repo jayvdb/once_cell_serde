@@ -7,7 +7,7 @@
 //! end.
 //! All threads should end up with the same result.
 
-use once_cell::sync::OnceCell;
+use once_cell_serde::sync::OnceCell;
 
 const N_THREADS: usize = 32;
 const N_ROUNDS: usize = 1_000_000;

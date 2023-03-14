@@ -4,7 +4,7 @@ mod unsync {
         sync::atomic::{AtomicUsize, Ordering::SeqCst},
     };
 
-    use once_cell::unsync::{Lazy, OnceCell};
+    use once_cell_serde::unsync::{Lazy, OnceCell};
 
     #[test]
     fn once_cell() {
@@ -261,7 +261,7 @@ mod sync {
 
     use crossbeam_utils::thread::scope;
 
-    use once_cell::sync::{Lazy, OnceCell};
+    use once_cell_serde::sync::{Lazy, OnceCell};
 
     #[test]
     fn once_cell() {
@@ -701,7 +701,7 @@ mod race {
 
     use crossbeam_utils::thread::scope;
 
-    use once_cell::race::{OnceBool, OnceNonZeroUsize};
+    use once_cell_serde::race::{OnceBool, OnceNonZeroUsize};
 
     #[test]
     fn once_non_zero_usize_smoke_test() {
@@ -838,7 +838,7 @@ mod race_once_box {
     #[cfg(feature = "std")]
     use crossbeam_utils::thread::scope;
 
-    use once_cell::race::OnceBox;
+    use once_cell_serde::race::OnceBox;
 
     #[derive(Default)]
     struct Heap {
